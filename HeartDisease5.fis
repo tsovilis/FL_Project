@@ -1,0 +1,156 @@
+[System]
+Name='HeartDisease5'
+Type='mamdani'
+Version=2.0
+NumInputs=11
+NumOutputs=1
+NumRules=44
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='ChestPain'
+Range=[1 4]
+NumMFs=4
+MF1='angina':'trimf',[1 1 1]
+MF2='nonaginal':'trimf',[3 3 3]
+MF3='asymptomatic':'trimf',[4 4 4]
+MF4='atangina':'trimf',[2 2 2]
+
+[Input2]
+Name='BloodPressure'
+Range=[80 300]
+NumMFs=4
+MF1='low':'trapmf',[0.8 71.2 111 134]
+MF2='high':'trimf',[142 157 172]
+MF3='veryhigh':'trapmf',[154 171 308.8 379.2]
+MF4='medium':'trimf',[127 139 153]
+
+[Input3]
+Name='Cholesterol'
+Range=[145 550]
+NumMFs=4
+MF1='low':'trapmf',[-0.8 128.8 155 197]
+MF2='high':'trimf',[217 263 307]
+MF3='veryhigh':'trapmf',[281 347 566.2 695.8]
+MF4='medium':'trimf',[188 215 250]
+
+[Input4]
+Name='BloodSugar'
+Range=[0 1]
+NumMFs=2
+MF1='false':'trimf',[0 0 0]
+MF2='true':'trimf',[1 1 1]
+
+[Input5]
+Name='ECG'
+Range=[0 2]
+NumMFs=3
+MF1='normal':'trimf',[0 0 0]
+MF2='ST-Tabnormal':'trimf',[1 1 1]
+MF3='hypertrophy':'trimf',[2 2 2]
+
+[Input6]
+Name='MaximumHeartRate'
+Range=[80 520]
+NumMFs=3
+MF1='low':'trapmf',[-78.4 62.4 100 141]
+MF2='medium':'trimf',[111 152 194]
+MF3='high':'trapmf',[152 216 537.6 678.4]
+
+[Input7]
+Name='Exercise'
+Range=[0 1]
+NumMFs=1
+MF1='true':'trimf',[1 1 1]
+
+[Input8]
+Name='OldPeak'
+Range=[0 6]
+NumMFs=3
+MF1='low':'trapmf',[-2.16 -0.24 1 2]
+MF2='risk':'trimf',[1.5 2.8 4.2]
+MF3='terrible':'trapmf',[2.55 4 6.24 8.16]
+
+[Input9]
+Name='ThalliumScan'
+Range=[3 7]
+NumMFs=3
+MF1='normal':'trimf',[3 3 3]
+MF2='fixeddefect':'trimf',[6 6 6]
+MF3='reversibledefect':'trimf',[7 7 7]
+
+[Input10]
+Name='Sex'
+Range=[0 1]
+NumMFs=2
+MF1='female':'trimf',[0 0 0]
+MF2='male':'trimf',[1 1 1]
+
+[Input11]
+Name='Age'
+Range=[27 78]
+NumMFs=4
+MF1='young':'trapmf',[0 0 29 38]
+MF2='old':'trimf',[40 48 58]
+MF3='veryold':'trapmf',[52 60 80.04 96.36]
+MF4='mild':'trimf',[33 38 45]
+
+[Output1]
+Name='Result'
+Range=[0 4]
+NumMFs=5
+MF1='healthy':'trapmf',[-1.44 -0.16 0.25 1]
+MF2='sick(s2)':'trimf',[1 2 3]
+MF3='sick(s4)':'trapmf',[3 3.75 4.5 5.415]
+MF4='sick(s1)':'trimf',[0 1 2]
+MF5='sick(s3)':'trimf',[2 3 4]
+
+[Rules]
+1 0 0 0 0 0 0 0 0 0 0, 1 (1) : 2
+4 0 0 0 0 0 0 0 0 0 0, 4 (1) : 2
+2 0 0 0 0 0 0 0 0 0 0, 2 (1) : 2
+3 0 0 0 0 0 0 0 0 0 0, 5 (1) : 2
+3 0 0 0 0 0 0 0 0 0 0, 3 (1) : 2
+0 0 0 0 0 0 0 0 0 2 0, 2 (1) : 2
+0 0 0 0 0 0 0 0 0 1 0, 4 (1) : 2
+0 1 0 0 0 0 0 0 0 0 0, 1 (1) : 2
+0 4 0 0 0 0 0 0 0 0 0, 4 (1) : 2
+0 2 0 0 0 0 0 0 0 0 0, 2 (1) : 2
+0 2 0 0 0 0 0 0 0 0 0, 5 (1) : 2
+0 3 0 0 0 0 0 0 0 0 0, 3 (1) : 2
+0 0 1 0 0 0 0 0 0 0 0, 1 (1) : 2
+0 0 4 0 0 0 0 0 0 0 0, 4 (1) : 2
+0 0 2 0 0 0 0 0 0 0 0, 2 (1) : 2
+0 0 2 0 0 0 0 0 0 0 0, 5 (1) : 2
+0 0 3 0 0 0 0 0 0 0 0, 3 (1) : 2
+0 0 0 2 0 0 0 0 0 0 0, 2 (1) : 2
+0 0 0 0 1 0 0 0 0 0 0, 1 (1) : 2
+0 0 0 0 1 0 0 0 0 0 0, 4 (1) : 2
+0 0 0 0 2 0 0 0 0 0 0, 2 (1) : 2
+0 0 0 0 3 0 0 0 0 0 0, 5 (1) : 2
+0 0 0 0 3 0 0 0 0 0 0, 3 (1) : 2
+0 0 0 0 0 1 0 0 0 0 0, 1 (1) : 2
+0 0 0 0 0 2 0 0 0 0 0, 4 (1) : 2
+0 0 0 0 0 2 0 0 0 0 0, 2 (1) : 2
+0 0 0 0 0 3 0 0 0 0 0, 5 (1) : 2
+0 0 0 0 0 3 0 0 0 0 0, 3 (1) : 2
+0 0 0 0 0 0 1 0 0 0 0, 2 (1) : 2
+0 0 0 0 0 0 0 1 0 0 0, 1 (1) : 2
+0 0 0 0 0 0 0 1 0 0 0, 4 (1) : 2
+0 0 0 0 0 0 0 3 0 0 0, 2 (1) : 2
+0 0 0 0 0 0 0 3 0 0 0, 5 (1) : 2
+0 0 0 0 0 0 0 2 0 0 0, 3 (1) : 2
+0 0 0 0 0 0 0 0 1 0 0, 1 (1) : 2
+0 0 0 0 0 0 0 0 1 0 0, 4 (1) : 2
+0 0 0 0 0 0 0 0 2 0 0, 2 (1) : 2
+0 0 0 0 0 0 0 0 3 0 0, 5 (1) : 2
+0 0 0 0 0 0 0 0 3 0 0, 3 (1) : 2
+0 0 0 0 0 0 0 0 0 0 1, 1 (1) : 2
+0 0 0 0 0 0 0 0 0 0 4, 4 (1) : 2
+0 0 0 0 0 0 0 0 0 0 2, 2 (1) : 2
+0 0 0 0 0 0 0 0 0 0 2, 5 (1) : 2
+0 0 0 0 0 0 0 0 0 0 3, 3 (1) : 2
