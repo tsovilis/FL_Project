@@ -1,0 +1,12 @@
+There are two R files in this directory, both of them require you have R installed on your system.
+
+They have been prepared as such that you can simply press ctrl-A (select all) and run all lines of codes.
+
+The first file is TrainingML:
+This file reads the database, performs Feature Selection on the data and removes the unnecesairy features.
+It then performs machine learning on the data and produces an accuracy measure.
+
+The Second file is TrainingFuzzy:
+This file reads the database and constructs a Fuzzy Logic System by using instance based learning.
+It then performs a 10fold cross validation repeated 3times to make sure its results are accurate.
+The last two lines allow you to show a summary of the FLS which shows its membership functions and Rules, and it allows you to plot the membership functions
