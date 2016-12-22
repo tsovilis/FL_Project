@@ -29,7 +29,7 @@ createFolds <- function(x,k){
 
 library(frbs)
 
-method.type <- "ANFIS"
+method.type <- "FRBCS.CHI"
 control <- list(num.labels = 7, type.mf = "GAUSSIAN", type.tnorm = "MIN", type.snorm = "MAX", type.implication.func = "ZADEH")  
 
 # repeat 3 times
@@ -47,8 +47,8 @@ for (k in 1:3) {
     testSet <- folds[folds$folds != j,]
     trainSet$folds <- NULL
     testSet$folds <- NULL
-    
-    fuzzymodel <- frbs.learn(trainSet,method.type = method.type, control = control)
+    range_data_input <- matrix(apply(trainSet[, 1:11], 2, range), nrow = 2)
+    fuzzymodel <- frbs.learn(trainSet,method.type = method.type,range.data = range_data_input, control = control)
     expectedresults <- as.numeric(testSet$sick)
     testSet$sick <- NULL
     
@@ -75,5 +75,5 @@ for (k in 1:3) {
 }
 print(paste0("final accuracy : ", mean(repeatScore)))
 
-summary(fuzzymodel)
-plotMF(fuzzymodel)
+#summary(fuzzymodel)
+#plotMF(fuzzymodel)
